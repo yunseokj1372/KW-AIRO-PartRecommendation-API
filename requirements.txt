@@ -1,0 +1,14 @@
+pandas==2.0.3
+numpy==1.26.4
+scikit-learn==1.2.1
+xgboost==2.0.0
+prince==0.12.0
+nltk==3.8.1
+catboost==1.2.2
+Levenshtein==0.21.1
+openpyxl==3.1.2
+boto3==1.33.7
+python-dotenv==1.0.1
+python-crontab==3.1.0
+oracledb==2.1.2
+sqlalchemy==2.0.30
