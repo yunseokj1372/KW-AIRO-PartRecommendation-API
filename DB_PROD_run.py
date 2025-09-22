@@ -69,8 +69,8 @@ def daily_run(df, rev1, rev2, prodtype, warranty = False):
 
     pred = None
     model_train_all_df = df
-    ML_path = "/home/ubuntu/KW_Triage_PR/model/model_store/" + rev1 + ".pkl"
-    label_encoder_path = "/home/ubuntu/KW_Triage_PR/model/model_store/" + rev1 + ".json"
+    ML_path = "/home/ubuntu/KW-AIRO-PartRecommendation-API/model/model_store/" + rev1 + ".pkl"
+    label_encoder_path = "/home/ubuntu/KW-AIRO-PartRecommendation-API/model/model_store/" + rev1 + ".json"
     # Adding a for loop to accommodate versions as well
     pod_versions = list(model_train_all_df['VERSION'].unique())
     model = PRD.TreeBasedModel(model_type = 'XGB', filter_type = 'label_version_all', filepath= ML_path, label_path= label_encoder_path, only_parts = True, warranty = warranty)
@@ -79,14 +79,14 @@ def daily_run(df, rev1, rev2, prodtype, warranty = False):
         model_train_df = model_train_all_df[model_train_all_df['VERSION']==v]
         if v == 'None':
             print('No Version. Default Version')
-            POD_path = f"/home/ubuntu/KW_Triage_PR/model/POD_jsons/{rev2}.json"
+            POD_path = f"/home/ubuntu/KW-AIRO-PartRecommendation-API/model/POD_jsons/{rev2}.json"
         else:
-            POD_path = f"/home/ubuntu/KW_Triage_PR/model/POD_jsons/{rev2}_{v}.json"
+            POD_path = f"/home/ubuntu/KW-AIRO-PartRecommendation-API/model/POD_jsons/{rev2}_{v}.json"
 
 
         pred, removed_tkts = model.prediction(new_df=model_train_df, ML_path = ML_path , label_encoder_path= label_encoder_path)
         label_encoder = js_r(label_encoder_path)
-        instruction_filepath = f'/home/ubuntu/KW_Triage_PR/data/instructions/{prodtype}.json'
+        instruction_filepath = f'/home/ubuntu/KW-AIRO-PartRecommendation-API/data/instructions/{prodtype}.json'
         try:
             prod = js_r(instruction_filepath)
         except:
@@ -98,9 +98,9 @@ def daily_run(df, rev1, rev2, prodtype, warranty = False):
             except:
                 ### New Version Method
                 print("New Version Encountered. Reverting to Base Version")
-                POD_path =  f"/home/ubuntu/KW_Triage_PR/model/POD_jsons/{rev2}.json"
+                POD_path =  f"/home/ubuntu/KW-AIRO-PartRecommendation-API/model/POD_jsons/{rev2}.json"
                 POD_json = js_r(POD_path)
-                new_path = f"/home/ubuntu/KW_Triage_PR/model/POD_jsons/{rev2}_{v}.json"
+                new_path = f"/home/ubuntu/KW-AIRO-PartRecommendation-API/model/POD_jsons/{rev2}_{v}.json"
                 # with open(new_path, 'w', encoding='utf-8') as f:
                 #     json.dump(POD_json, f, ensure_ascii=False, indent=4) 
                 # print("Duplication of Base Version Completed")
@@ -129,8 +129,8 @@ def single_daily_run(df, rev1, rev2, prodtype, warranty = False):
 
     pred = None
     model_train_all_df = df
-    ML_path = "/home/ubuntu/KW_Triage_PR/model/model_store/" + rev1 + ".pkl"
-    label_encoder_path = "/home/ubuntu/KW_Triage_PR/model/model_store/" + rev1 + ".json"
+    ML_path = "/home/ubuntu/KW-AIRO-PartRecommendation-API/model/model_store/" + rev1 + ".pkl"
+    label_encoder_path = "/home/ubuntu/KW-AIRO-PartRecommendation-API/model/model_store/" + rev1 + ".json"
     # Adding a for loop to accommodate versions as well
     pod_versions = list(model_train_all_df['VERSION'].unique())
     model = PRD.TreeBasedModel(model_type = 'XGB', filter_type = 'label_version_all', filepath= ML_path, label_path= label_encoder_path, only_parts = True, warranty = warranty)
@@ -139,14 +139,14 @@ def single_daily_run(df, rev1, rev2, prodtype, warranty = False):
         model_train_df = model_train_all_df[model_train_all_df['VERSION']==v]
         if v == 'None':
             print('No Version. Default Version')
-            POD_path = f"/home/ubuntu/KW_Triage_PR/model/POD_jsons/{rev2}.json"
+            POD_path = f"/home/ubuntu/KW-AIRO-PartRecommendation-API/model/POD_jsons/{rev2}.json"
         else:
-            POD_path = f"/home/ubuntu/KW_Triage_PR/model/POD_jsons/{rev2}_{v}.json"
+            POD_path = f"/home/ubuntu/KW-AIRO-PartRecommendation-API/model/POD_jsons/{rev2}_{v}.json"
 
 
         pred, removed_tkts = model.prediction(new_df=model_train_df, ML_path = ML_path , label_encoder_path= label_encoder_path)
         label_encoder = js_r(label_encoder_path)
-        instruction_filepath = f'/home/ubuntu/KW_Triage_PR/data/instructions/{prodtype}.json'
+        instruction_filepath = f'/home/ubuntu/KW-AIRO-PartRecommendation-API/data/instructions/{prodtype}.json'
         try:
             prod = js_r(instruction_filepath)
         except:
@@ -158,9 +158,9 @@ def single_daily_run(df, rev1, rev2, prodtype, warranty = False):
             except:
                 ### New Version Method
                 print("New Version Encountered. Reverting to Base Version")
-                POD_path =  f"/home/ubuntu/KW_Triage_PR/model/POD_jsons/{rev2}.json"
+                POD_path =  f"/home/ubuntu/KW-AIRO-PartRecommendation-API/model/POD_jsons/{rev2}.json"
                 POD_json = js_r(POD_path)
-                new_path = f"/home/ubuntu/KW_Triage_PR/model/POD_jsons/{rev2}_{v}.json"
+                new_path = f"/home/ubuntu/KW-AIRO-PartRecommendation-API/model/POD_jsons/{rev2}_{v}.json"
                 # with open(new_path, 'w', encoding='utf-8') as f:
                 #     json.dump(POD_json, f, ensure_ascii=False, indent=4) 
                 # print("Duplication of Base Version Completed")
@@ -186,10 +186,10 @@ def single_daily_run(df, rev1, rev2, prodtype, warranty = False):
 
 # Multiple tickets
 def prodrun():
-    directory = '/home/ubuntu/KW_Triage_PR/model/model_store/'
+    directory = '/home/ubuntu/KW-AIRO-PartRecommendation-API/model/model_store/'
     
     ### Temporary Seal Accommodation
-    seal_dict = js_r('/home/ubuntu/KW_Triage_PR/data/special_case/seal.json')
+    seal_dict = js_r('/home/ubuntu/KW-AIRO-PartRecommendation-API/data/seal.json')
     seal_modelno = list(seal_dict.keys())
     ###
 
@@ -319,10 +319,10 @@ def prodrun():
     connection.close()
 
 def single_prodrun():
-    directory = '/home/ubuntu/KW_Triage_PR/model/model_store/'
+    directory = '/home/ubuntu/KW-AIRO-PartRecommendation-API/model/model_store/'
     
     ### Temporary Seal Accommodation
-    seal_dict = js_r('/home/ubuntu/KW_Triage_PR/data/special_case/seal.json')
+    seal_dict = js_r('/home/ubuntu/KW-AIRO-PartRecommendation-API/data/special_case/seal.json')
     seal_modelno = list(seal_dict.keys())
     ###
 
