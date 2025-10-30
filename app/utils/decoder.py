@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from model import PRD
+from app.models import PRD
 
 def part_descripton_add(df):
 
@@ -12,7 +12,7 @@ def part_descripton_add(df):
     df -- the dataframe to add part descriptions to
     """
 
-    part_desc_df = pd.read_csv('/home/ubuntu/KW_Triage_PR/data/part_desc/part_desc.csv')
+    part_desc_df = pd.read_csv('/home/ubuntu/KW-AIRO-PartRecommendation-API/app/data/part_desc.csv')
 
     part_desc_df= part_desc_df.dropna()
 

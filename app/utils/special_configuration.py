@@ -15,7 +15,7 @@ def js_r(filename: str):
 
 
 def damper_add(df):
-    damper_df = pd.read_excel('/home/ubuntu/KW_Triage_PR/data/special_case/damper.xlsx')
+    damper_df = pd.read_excel('/home/ubuntu/KW-AIRO-PartRecommendation-API/app/data/damper.xlsx')
     factors = dict(zip(damper_df['PARTNO'], damper_df['QUANTITY']))
     rows = []
     for _, row in df.iterrows():
@@ -73,15 +73,4 @@ def icemaker_two_part_no(df):
 
     return df_filtered
 
-
-    
-        
-
-if __name__ == '__main__':
-    load_dotenv()
-    connection = oracledb.connect(user = os.getenv('USER_DSN'),
-                                  password = os.getenv('PASSWORD'),
-                                  dsn = os.getenv('DSN'))
-
-    
 

@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 import xgboost as xgb
 import pickle
 from sklearn.metrics import make_scorer
-from utils import custom_metric, encoder
+from app.utils import custom_metric, encoder
 from sklearn.model_selection import GridSearchCV
 from catboost import CatBoostClassifier
 import numpy as np

@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 import xgboost as xgb
 import numpy as np
 import json
-from utils import decoder
+from app.utils import decoder
 
 def adjusted(actual_set, pred_set):
     numerator = set(actual_set & pred_set) 

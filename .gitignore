@@ -24,3 +24,6 @@ update_jsons.py
 POD_jsons_backup/
 /TODO/*
 ml_documentation.md
+/app/data/*
+/app/models/POD_jsons/*
+/app/models/model_store/*

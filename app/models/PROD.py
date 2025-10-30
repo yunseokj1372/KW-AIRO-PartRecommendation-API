@@ -1,8 +1,8 @@
 import pandas as pd
-from utils import POD_preprocessing, encoder
+from app.utils import POD_preprocessing, encoder
 import re
 import json
-from utils import decoder
+from app.utils import decoder
 
 pd.set_option('display.max_columns', None)
 
